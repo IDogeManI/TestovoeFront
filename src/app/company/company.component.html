@@ -1,0 +1,120 @@
+<div class="outerContainer">
+  <!-- <p>{{company.id}}</p> -->
+  <p
+    class="name"
+    (click)="showDetails = !showDetails"
+    *ngIf="editMode == false">
+    {{ company.name }}
+  </p>
+  <p *ngIf="editMode == false">{{ company.adress }}</p>
+  <p *ngIf="editMode == false">{{ company.city }}</p>
+  <p *ngIf="editMode == false">{{ company.state }}</p>
+  <p *ngIf="editMode == false">{{ company.phone }}</p>
+  <input
+    *ngIf="editMode == true"
+    type="text"
+    [(ngModel)]="companyName"
+    placeholder="name" />
+  <input
+    *ngIf="editMode == true"
+    type="text"
+    [(ngModel)]="companyAdress"
+    placeholder="adress" />
+  <input
+    *ngIf="editMode == true"
+    type="text"
+    [(ngModel)]="companyCity"
+    placeholder="city" />
+  <input
+    *ngIf="editMode == true"
+    type="text"
+    [(ngModel)]="companyState"
+    placeholder="state" />
+  <input
+    *ngIf="editMode == true"
+    type="text"
+    [(ngModel)]="companyPhone"
+    placeholder="phone" />
+  <button class="c-button" *ngIf="editMode == false" (click)="editMode = true">
+    Edit
+  </button>
+  <button class="c-button" *ngIf="editMode == true" (click)="onSubmitEdit()">
+    Submit
+  </button>
+  <ng-container *ngIf="showDetails">
+    <div class="detailsContainer">
+      <div class="addHeader">
+        <h2>Employees</h2>
+        <button
+          class="a-button"
+          *ngIf="employeeAddMode == false"
+          (click)="employeeAddMode = true">
+          Add
+        </button>
+        <button
+          class="a-button"
+          *ngIf="employeeAddMode == true"
+          (click)="onSubmitEmployee()">
+          Submit
+        </button>
+      </div>
+      <div class="addInput" *ngIf="employeeAddMode == true">
+        <input
+          type="text"
+          [(ngModel)]="addedEmployeeFirsName"
+          placeholder="firstName" />
+        <input
+          type="text"
+          [(ngModel)]="addedEmployeeLastName"
+          placeholder="lastName" />
+        <input
+          type="text"
+          [(ngModel)]="addedEmployeeTitle"
+          placeholder="title" />
+        <input
+          type="text"
+          [(ngModel)]="addedEmployeeBirthDate"
+          placeholder="birthDate" />
+        <input
+          type="text"
+          [(ngModel)]="addedEmployeePosition"
+          placeholder="position" />
+      </div>
+      <ng-container *ngFor="let employee of company.employees">
+        <app-employee [employee]="employee" [companyId]="company.id"></app-employee>
+      </ng-container>
+      <h2>History</h2>
+      <ng-container *ngFor="let history of company.histories">
+        <app-history [history]="history"></app-history>
+      </ng-container>
+      <div class="addHeader">
+        <h2>Notes</h2>
+        <button
+          class="a-button"
+          *ngIf="noteAddMode == false"
+          (click)="noteAddMode = true">
+          Add
+        </button>
+        <button
+          class="a-button"
+          *ngIf="noteAddMode == true"
+          (click)="onSubmitNote()">
+          Submit
+        </button>
+      </div>
+      <div class="addInput" *ngIf="noteAddMode == true">
+        <input
+          type="number"
+          [(ngModel)]="addedNoteInvoiceNumber"
+          placeholder="InvoiceNumber" />
+        <input
+          type="text"
+          [(ngModel)]="addedNoteEmployee"
+          placeholder="NoteEmployee" />
+      </div>
+      <ng-container *ngFor="let note of company.notes">
+        <app-note [note]="note"></app-note>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

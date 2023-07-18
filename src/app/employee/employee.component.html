@@ -1,0 +1,34 @@
+<div class="container">
+  <p *ngIf="editMode==false">{{employee.firstName}}</p>
+  <p *ngIf="editMode==false">{{employee.lastName}}</p>
+  <p *ngIf="editMode==false">{{employee.title}}</p>
+  <p *ngIf="editMode==false">{{employee.birthDate}}</p>
+  <p *ngIf="editMode==false">{{employee.position}}</p>
+  <input
+    *ngIf="editMode == true"
+    type="text"
+    [(ngModel)]="employeeFirsName"
+    placeholder="FirsName" />
+  <input
+    *ngIf="editMode == true"
+    type="text"
+    [(ngModel)]="employeeLastName"
+    placeholder="LastName" />
+  <input
+    *ngIf="editMode == true"
+    type="text"
+    [(ngModel)]="employeeTitle"
+    placeholder="Title" />
+  <input
+    *ngIf="editMode == true"
+    type="text"
+    [(ngModel)]="employeeBirthDate"
+    placeholder="BirthDate" />
+  <input
+    *ngIf="editMode == true"
+    type="text"
+    [(ngModel)]="employeePosition"
+    placeholder="Position" />
+  <button class="c-button" *ngIf="editMode==false" (click)="editMode=true">Edit</button>
+  <button class="c-button" *ngIf="editMode==true" (click)="onSubmitEdit()">Submit</button>
+</div>

@@ -1,0 +1,15 @@
+.outerContainer {
+  display: grid;
+  grid-template-columns: 200px 100px 100px 100px 150px 100px;
+  grid-auto-rows: minmax(100px, auto);
+  justify-items: center;
+  align-items: center;
+  margin: 20px 20px;
+  background-color: rgb(207, 207, 207);
+  border-radius: 20px;
+  column-gap: 20px;
+}
+.innerContainer {
+  display: flex;
+  margin: 10px 10px;
+}
